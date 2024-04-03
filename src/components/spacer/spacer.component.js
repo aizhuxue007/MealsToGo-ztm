@@ -4,6 +4,7 @@ const sizeVariant = {
   small: 1,
   medium: 2,
   large: 3,
+  max: 5
 };
 
 const positionVariant = {

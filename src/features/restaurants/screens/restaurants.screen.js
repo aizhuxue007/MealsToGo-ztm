@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Searchbar } from "react-native-paper";
-import { FlatList } from "react-native";
+import { Searchbar, ActivityIndicator, MD2Colors } from "react-native-paper";
+import { FlatList, View } from "react-native";
 import styled from "styled-components/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
@@ -19,11 +19,20 @@ const RestaurantList = styled(FlatList).attrs({
   },
 })``;
 
+const LoadingAnimation = styled(ActivityIndicator)`
+  margin-top: 200px;
+`
+
 export const RestaurantsScreen = () => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
-  console.log(error);
+
   return (
     <SafeArea>
+      {isLoading && <LoadingAnimation
+        animating={isLoading}
+        color={MD2Colors.green800}
+        size={100}
+      />}
       <SearchContainer>
         <Searchbar />
       </SearchContainer>
